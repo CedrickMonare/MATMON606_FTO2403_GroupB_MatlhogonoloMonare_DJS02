@@ -28,3 +28,20 @@ form.addEventListener("submit", (event) => {
     if (isNaN(dividendNumber) || isNaN(dividerNumber)) {
       throw new Error("Invalid input: not a number");
     }
+ // Validation for division by zero
+    if (dividerNumber === 0) {
+      result.innerText = "Division not performed. Invalid number provided. Try again.";
+      console.error("Error: Division by zero");
+      return;
+    }
+
+    // Function to calculate the result
+    const divisionResult = Math.floor(dividendNumber / dividerNumber);
+    result.innerText = divisionResult;
+
+  } catch (error) {
+    // Handle critical errors
+    document.body.innerHTML = "<h1>Something went wrong. Please reload the page</h1>";
+    console.error(error);
+  }
+});
